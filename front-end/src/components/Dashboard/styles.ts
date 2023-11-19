@@ -1,7 +1,8 @@
 import styled from "styled-components";
 
 export const Container = styled.main`
-  padding: 1rem;
+  margin: 0 auto;
+  max-width: 1100px;
 
   table {
     border-collapse: collapse;
