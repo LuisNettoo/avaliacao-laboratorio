@@ -2,6 +2,7 @@ import { useState, useEffect } from "react"
 
 import { Container } from "./styles"
 import { api } from "../../services/api";
+import { formatPhoneNumber, formatCPF } from "../../services/format"
 
 interface User {
   idusuarios: number;
@@ -36,8 +37,8 @@ function Dashboard() {
           {users.map(user => (
             <tr key={user.idusuarios}> 
               <td>{user.nome}</td>
-              <td>{user.telefone}</td>
-              <td>{user.cpf}</td>
+              <td>{formatPhoneNumber(user.telefone)}</td>
+              <td>{formatCPF(user.cpf)}</td>
               <td>{user.estado}</td>
               <td>{user.cidade}</td>
             </tr>
