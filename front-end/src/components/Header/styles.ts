@@ -8,6 +8,10 @@ export const Container = styled.header`
   max-width: 1100px;
   margin: 1rem auto;
 
+  h1 {
+    font-weight: 600;
+  }
+
   a {
     display: flex;
     align-items: center;
