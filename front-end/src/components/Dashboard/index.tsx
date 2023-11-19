@@ -1,6 +1,27 @@
+import { useState, useEffect } from "react"
+
 import { Container } from "./styles"
+import { api } from "../../services/api";
+
+interface User {
+  idusuarios: number;
+  nome: string;
+  telefone: string;
+  cpf: string;
+  estado: string;
+  cidade: string;
+}
 
 function Dashboard() {
+  const [users, setUsers] = useState<User[]>([])
+
+  useEffect(() => {
+    api.get("/buscar").then(response => {
+      setUsers(response.data)
+    })
+  }, [])
+
+
   return (
     <Container>
       <table>
@@ -12,7 +33,15 @@ function Dashboard() {
           <th>Cidade</th>
         </thead>
         <tbody>
-          
+          {users.map(user => (
+            <tr key={user.idusuarios}> 
+              <td>{user.nome}</td>
+              <td>{user.telefone}</td>
+              <td>{user.cpf}</td>
+              <td>{user.estado}</td>
+              <td>{user.cidade}</td>
+            </tr>
+          ))}
         </tbody>
       </table>
     </Container>
