@@ -2,10 +2,10 @@ import { useState, useEffect } from "react"
 
 import { Container } from "./styles"
 import { api } from "../../services/api";
-import { formatPhoneNumber, formatCPF } from "../../services/format"
+import UserRow from "../UserRow";
 
 interface User {
-  idusuarios: number;
+  id: number;
   nome: string;
   telefone: string;
   cpf: string;
@@ -22,6 +22,13 @@ function Dashboard() {
     })
   }, [])
 
+  async function deleteUser(id: number) {
+    await api.delete(`/deletar/${id}`)
+    
+    api.get("/buscar").then(response => {
+      setUsers(response.data)
+    })
+  }
 
   return (
     <Container>
@@ -32,16 +39,20 @@ function Dashboard() {
           <th>CPF</th>
           <th>Estado</th>
           <th>Cidade</th>
+          <th>Ações</th>
         </thead>
         <tbody>
           {users.map(user => (
-            <tr key={user.idusuarios}> 
-              <td>{user.nome}</td>
-              <td>{formatPhoneNumber(user.telefone)}</td>
-              <td>{formatCPF(user.cpf)}</td>
-              <td>{user.estado}</td>
-              <td>{user.cidade}</td>
-            </tr>
+            <UserRow 
+              key={user.id}
+              id={user.id}
+              nome={user.nome}
+              telefone={user.telefone}
+              cpf={user.cpf}
+              estado={user.estado}
+              cidade={user.cidade}
+              deleteUser={deleteUser}
+            />
           ))}
         </tbody>
       </table>

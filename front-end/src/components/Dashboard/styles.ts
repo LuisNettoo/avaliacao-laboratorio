@@ -29,14 +29,12 @@ export const Container = styled.main`
         }
       }
     }
-
+    
     tbody {
-      tr:nth-child(even) {
+      tr {
+        &:nth-child(even) {
         background-color: #F4F5F7;
-      }
-
-      td {
-        padding: 0.8rem;
+        }
       }
     }
   }
