@@ -21,26 +21,36 @@ export const Container = styled.main`
 
     box-shadow: rgba(0, 0, 0, 0.2) 5px 5px 10px 1px;
 
-    label {
+    div {
       display: flex;
       flex-direction: column;
-      font-size: 14px;
-    }
 
-    input {
-      margin-top: .5rem;
-      padding: 1rem;
-      font-size: 1rem;
+      label {
+        display: flex;
+        flex-direction: column;
+        font-size: 14px;
+      }
 
-      outline: none;
-      border: 1px solid #ccc;
-      border-radius: 0.25rem;
+      input {
+        margin-top: .5rem;
+        padding: 1rem;
+        font-size: 1rem;
+
+        outline: none;
+        border: 1px solid #ccc;
+        border-radius: 0.25rem;
 
       &:focus {
         border: 2px solid var(--dark-blue);
+        }
+
       }
 
+      span {
+        color: red;
+      }
     }
+    
 
     button[type="submit"] {
       cursor: pointer;
