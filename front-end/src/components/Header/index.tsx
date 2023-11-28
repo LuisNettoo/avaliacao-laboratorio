@@ -6,7 +6,7 @@ import { Container } from "../Header/styles"
 function Header() {
   return (
     <Container>
-      <h1>Clientes</h1>
+      <h1>Usuarios</h1>
       <Link to={"/criar_usuario"}>
         <MdPersonAddAlt1 /> Novo Cliente
       </Link>
