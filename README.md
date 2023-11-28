@@ -15,3 +15,6 @@
 <p>
   Na pasta backend é necessario instalar as seguintes bibliotecas, flask, flask-cors e mysql.connection
 </p>
+<p>
+  E na pasta frontend basta rodar o comando npm install e apos ter instalado as depedencias, basta rodar o comando npm run dev
+</p>
