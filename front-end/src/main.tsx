@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client'
 import App from './App.tsx'
 import { createBrowserRouter, RouterProvider } from "react-router-dom"
 import CreateUser from './pages/CreateUser/index.tsx'
+import EditUser from './pages/EditUser/index.tsx'
 
 const router = createBrowserRouter([
   {
@@ -12,6 +13,10 @@ const router = createBrowserRouter([
   {
     path: "/criar_usuario",
     element: <CreateUser />
+  },
+  {
+    path: "editar_usuario/:id",
+    element: <EditUser />
   }
 ])
 

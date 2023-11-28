@@ -3,6 +3,7 @@ import { FaTrash } from "react-icons/fa";
 
 import { formatCPF, formatPhoneNumber } from "../../services/format";
 import { Container } from "./styles"
+import { Link } from "react-router-dom";
 
 interface UserRowProps {
   id: number;
@@ -29,9 +30,9 @@ function UserRow({ id, nome, telefone, cpf, estado, cidade, deleteUser }: UserRo
         <td>{estado}</td>
         <td>{cidade}</td>
         <td>
-          <button>
+          <Link to={`/editar_usuario/${id}`}>
             <RiPencilFill />
-          </button>
+          </Link>
           <button onClick={handleDeleteUser}>
             <FaTrash />
           </button>

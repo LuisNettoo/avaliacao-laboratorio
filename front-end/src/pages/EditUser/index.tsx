@@ -1,12 +1,20 @@
-import { useNavigate } from "react-router-dom"
-import { useForm } from "react-hook-form"
-import { yupResolver } from "@hookform/resolvers/yup"
-import { object, string, } from "yup"
+import { useEffect, useState } from "react"
+import { useNavigate, useParams } from "react-router-dom";
+import { api } from "../../services/api";
+import { GlobalStyles } from "../../styles/global";
+import { Container } from "../CreateUser/styles";
+import { useForm } from "react-hook-form";
+import { object, string } from "yup";
+import { yupResolver } from "@hookform/resolvers/yup";
 
-
-import { Container } from "./styles"
-import { api } from "../../services/api"
-import { GlobalStyles } from "../../styles/global"
+interface User {
+  id: number;
+  nome: string;
+  telefone: string;
+  cpf: string;
+  estado: string;
+  cidade: string;
+}
 
 const schema = object({
   name: string().required("É necessário informar seu nome completo."),
@@ -16,13 +24,34 @@ const schema = object({
   city: string().required("É necessário informar sua cidade."),
 })
 
-function CreateUser() {
+function EditUser() {
+  const { id } = useParams()
+  const [user, setUser] = useState<User>({
+    id: 0,
+    nome: "",
+    telefone: "",
+    cpf: "",
+    estado: "",
+    cidade: "",
+  })
+
+  useEffect(() => {
+    api.get("/buscar").then(response => {
+      const users = response.data
+      for (let i = 0; i < users.length; i++) {
+        if (users[i].id === Number(id)) {
+          setUser(users[i])
+        }
+      }
+    })
+  },[])
+  
   const { register, handleSubmit, formState: { errors } } = useForm({resolver: yupResolver(schema)})
   
   const navigate = useNavigate()
 
   function onSubmit(data: any) {
-    api.post("salvar_usuario", {
+    api.put(`/editar/${id}`, {
       nome: data.name,
       telefone: data.phone,
       cpf: data.cpf,
@@ -38,12 +67,13 @@ function CreateUser() {
     <>
       <Container>
         <form onSubmit={handleSubmit(onSubmit)} autoComplete="off">
-          <h1>Criar Novo Usuario</h1>
+          <h1>Editar Usuario</h1>
           <div>
             <label>Nome Completo*:</label>
             <input 
               type="text"
               {...register("name")}
+              defaultValue={user.nome}
             />
             <span>{errors?.name?.message}</span>
           </div>
@@ -52,6 +82,7 @@ function CreateUser() {
             <input 
               type="text"
               {...register("phone")}
+              defaultValue={user.telefone}
             />
             <span>{errors?.phone?.message}</span>
           </div>
@@ -60,6 +91,7 @@ function CreateUser() {
             <input 
               type="text"
               {...register("cpf")}
+              defaultValue={user.cpf}
             />
             <span>{errors?.cpf?.message}</span>
           </div>
@@ -68,6 +100,7 @@ function CreateUser() {
             <input 
               type="text"
               {...register("state")}
+              defaultValue={user.estado}
             />
             <span>{errors?.state?.message}</span>
           </div>
@@ -76,6 +109,7 @@ function CreateUser() {
             <input 
               type="text"
               {...register("city")}
+              defaultValue={user.cidade}
             />
             <span>{errors?.city?.message}</span>
           </div>
@@ -90,4 +124,4 @@ function CreateUser() {
   )
 }
 
-export default CreateUser
+export default EditUser

@@ -47,6 +47,7 @@ export const Container = styled.main`
       }
 
       span {
+        margin-top: 0.5rem;
         color: red;
       }
     }
