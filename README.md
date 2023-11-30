@@ -1,73 +1,63 @@
-# avaliacao-laboratorio
+# Avaliação de Laboratório
 
-### Tecnologia Utilizadas
-<ul>
-  <li>Python</li>
-  <li>React Typescript</li>
-  <li>Flask</li>
-  <li>MySQL</li>
-</ul>
+## Tecnologias Utilizadas
+- Python
+- React Typescript
+- Flask
+- MySQL
 
-### Passo a passo de como rodar o projeto
+## Passo a Passo para Executar o Projeto
 
-<p>O projeto necessita que a maquina tenha instalado, o <a href="https://nodejs.org/en">Node.js</a>, <a href="https://dev.mysql.com/downloads/mysql/"> MySQL 8.2.</a> e o <a href="https://dev.mysql.com/downloads/workbench/">MySQL Workbench</a>.</p>
+### Pré-requisitos
+Certifique-se de ter as seguintes tecnologias instaladas em sua máquina:
+- [Node.js 20.10.00 LTS](https://nodejs.org/en)
+- [MySQL 8.2](https://dev.mysql.com/downloads/mysql/)
+- [MySQL Workbench](https://dev.mysql.com/downloads/workbench/)
 
-## Banco de dados
-<p>
-  É necessario criar um banco de dados, logo após criar uma tabela chamada "usuarios" que tem 6 colunas que são "idusuarios, nome, telefone, cpf, estado, cidade" tem que está nessa exata ordem.
-  Quando criado guarde as informações "user, password, host, database"
-</p>
+### Banco de Dados
+1. Crie um banco de dados. Substitua 'nome_do_banco' pelo nome desejado.
+   ```sql
+   CREATE DATABASE nome_do_banco;
+   USE nome_do_banco;
+   ```
 
-```
--- Criação do banco de dados (substitua 'nome_do_banco' pelo nome desejado)
-CREATE DATABASE nome_do_banco;
+2. Crie a tabela "usuarios" com as seguintes colunas: "idusuarios, nome, telefone, cpf, estado, cidade", nessa ordem.
+   ```sql
+   CREATE TABLE usuarios (
+       idusuarios INT AUTO_INCREMENT PRIMARY KEY,
+       nome VARCHAR(255),
+       telefone VARCHAR(11),
+       cpf VARCHAR(11),
+       estado VARCHAR(50),
+       cidade VARCHAR(50)
+   );
+   ```
 
--- Utilização do banco de dados recém-criado
-USE nome_do_banco;
+3. Anote as informações de conexão do banco de dados: "user, password, host, database".
 
--- Criação da tabela "usuarios"
-CREATE TABLE usuarios (
-    idusuarios INT AUTO_INCREMENT PRIMARY KEY,
-    nome VARCHAR(255),
-    telefone VARCHAR(11),
-    cpf VARCHAR(11),
-    estado VARCHAR(50),
-    cidade VARCHAR(50)
-);
-```
+### Back-end
+1. Na pasta backend, instale as bibliotecas necessárias usando o seguinte comando:
+   ```bash
+   pip install flask flask-cors mysql.connector
+   ```
 
-## Back-end
-<p>
-  Na pasta backend é necessario instalar as seguintes bibliotecas, flask, flask-cors e mysql.connection.
-  Usando o comando abaixo
-</p>
+2. Configure as variáveis de conexão no arquivo api_crud.py de acordo com as informações do banco de dados:
+    ```python
+    db_config = mysql.connector.connect(
+        user = "",
+        password = "",
+        host = "",
+        database = "",
+    )
+    ```
 
-```
-pip install flask flask-cors mysql.connection
-```
-<p>
-  Logo após configure as variaveis de conexão de acordo com seu banco de dados
-</p>
+### Front-end
+1. Na pasta frontend, instale as dependências usando o seguinte comando:
+   ```bash
+   npm install
+   ```
 
-```
-db_config = mysql.connector.connect(
-    user = "",
-    password = "",
-    host = "",
-    database = "",
-)
-```
-
-## Front-end
-
-<p>
-  E na pasta frontend basta rodar o comando "npm install" para instalar as depedencias. Apos ter instalado as depedencias, basta rodar o comando "npm run dev" para inicializar o projeto
-</p>
-
-```
-npm install
-```
-
-```
-npm run dev
-```
+2. Inicialize o projeto com o seguinte comando:
+   ```bash
+   npm run dev
+   ```
