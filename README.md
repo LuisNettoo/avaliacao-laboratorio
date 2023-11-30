@@ -1,5 +1,12 @@
 # Avaliação de Laboratório
 
+## Descrição do projeto
+Este projeto visa desenvolver um sistema de cadastro de usuários em formato de tabela, proporcionando funcionalidades essenciais para a gestão eficiente de informações. O sistema é projetado com as seguintes funcionalidades principais:
+- Cadastrar usuário
+- Listar usuários
+- Deletar usuários
+- Atualizar dados do usuário
+
 ## Tecnologias Utilizadas
 - Python
 - React Typescript
@@ -52,12 +59,12 @@ Certifique-se de ter as seguintes tecnologias instaladas em sua máquina:
     ```
 
 ### Front-end
-1. Na pasta frontend, instale as dependências usando o seguinte comando:
+1. Na pasta frontend, instale as dependências usando o seguinte comando no terminal:
    ```bash
    npm install
    ```
 
-2. Inicialize o projeto com o seguinte comando:
+2. Inicialize o projeto com o seguinte comando no terminal:
    ```bash
    npm run dev
    ```
