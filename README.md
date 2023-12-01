@@ -32,11 +32,11 @@ Certifique-se de ter as seguintes tecnologias instaladas em sua máquina:
    ```sql
    CREATE TABLE usuarios (
        idusuarios INT AUTO_INCREMENT PRIMARY KEY,
-       nome VARCHAR(255),
+       nome VARCHAR(75),
        telefone VARCHAR(11),
        cpf VARCHAR(11),
-       estado VARCHAR(50),
-       cidade VARCHAR(50)
+       estado VARCHAR(45),
+       cidade VARCHAR(30)
    );
    ```
 
