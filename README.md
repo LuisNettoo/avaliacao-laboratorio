@@ -57,6 +57,10 @@ Certifique-se de ter as seguintes tecnologias instaladas em sua máquina:
         database = "",
     )
     ```
+3. Inicialize a API com o seguinte comando no terminal:
+   ```bash
+   python api_crud.py
+   ```
 
 ### Front-end
 1. Na pasta frontend, instale as dependências usando o seguinte comando no terminal:
