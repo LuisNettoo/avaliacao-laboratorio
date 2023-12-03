@@ -17,7 +17,7 @@ Este projeto visa desenvolver um sistema de cadastro de usuários em formato de 
 
 ### Pré-requisitos
 Certifique-se de ter as seguintes tecnologias instaladas em sua máquina:
-- [Node.js 20.10.00 LTS](https://nodejs.org/en)
+- [Node.js 20.10.0](https://nodejs.org/en)
 - [Python 3.12](https://www.python.org/downloads/)
 - [MySQL 8.2](https://dev.mysql.com/downloads/mysql/)
 - [MySQL Workbench](https://dev.mysql.com/downloads/workbench/)
